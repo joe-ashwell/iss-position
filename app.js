@@ -5,15 +5,19 @@ const endpointISSPosition = 'http://api.open-notify.org/iss-now.json';
 const mapboxImage = document.querySelector('img.map');
 const ISSPosition = [];
 
-function fetchEndPoint() {
+let fetchEndPoint = () => {
 
   fetch(endpointISSPosition)
     .then(blob => blob.json())
-    .then(data => ISSPosition.push(data));
+    .then(data => {
+      ISSPosition.push(data);
+      return ISSPosition;
+    })
+    .then(getMapCoordinates())
 
-}
+};
 
-function getMapCoordinates() {
+let getMapCoordinates = () => {
 
   let long = parseFloat(ISSPosition[0].iss_position.longitude);
   let lat = parseFloat(ISSPosition[0].iss_position.latitude);
@@ -24,6 +28,5 @@ function getMapCoordinates() {
 
 }
 
-
-setTimeout(getMapCoordinates, 1500);
-setInterval(fetchEndPoint, 1000);
+window.addEventListener('load', fetchEndPoint);
+setTimeout(getMapCoordinates, 1000);
