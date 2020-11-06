@@ -1,7 +1,7 @@
 // const endpointPeopleInSpace = 'http://api.open-notify.org/astros.json';
 // const endpointEarthMeteoriteLanding = 'https://data.nasa.gov/resource/y77d-th95.json';
 
-const endpointISSPosition = 'https://api.open-notify.org/iss-now.json';
+const endpointISSPosition = 'http://api.open-notify.org/iss-now.json';
 const mapboxImage = document.querySelector('img.map');
 const ISSPosition = [];
 
